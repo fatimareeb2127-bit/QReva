@@ -1,0 +1,706 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <title>QReva | Create Anything. Turn It Into a QR.</title>
+
+  <link rel="stylesheet" href="style.css">
+
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/qrcodejs/1.0.0/qrcode.min.js"></script>
+</head>
+<div id="spaceEffects"></div>
+
+<script>
+const spaceEffects = document.getElementById("spaceEffects");
+
+Object.assign(spaceEffects.style, {
+  position: "fixed",
+  top: "0",
+  left: "0",
+  width: "100vw",
+  height: "100vh",
+  overflow: "hidden",
+  pointerEvents: "none",
+  zIndex: "1"
+});
+
+const colors = [
+  "#00E5FF",
+  "#00BFFF",
+  "#008CFF",
+  "#4169E1",
+  "#6A5CFF",
+  "#8A2BE2",
+  "#B14EFF",
+  "#D946EF",
+  "#FF4FC3",
+  "#FF1493",
+  "#FF4D6D",
+  "#FF6B6B",
+  "#FF8C42",
+  "#FFB000",
+  "#FFD166",
+  "#FFF176",
+  "#FFFFFF",
+  "#B8F2FF",
+  "#00FFB3",
+  "#00FA9A",
+  "#32CD32",
+  "#7CFC00",
+  "#20E0C5",
+  "#00CED1",
+  "#7DF9FF",
+  "#C77DFF",
+  "#E0AAFF"
+];
+
+const symbols = [
+  "✦",
+  "✧",
+  "★",
+  "☆",
+  "✨",
+  "⭐",
+  "💫",
+  "🌟",
+  "⚡",
+  "💎",
+  "🌈",
+  "❤️",
+  "💙",
+  "💜",
+  "💚",
+  "🩺",
+  "💊",
+  "🧬",
+  "🔬",
+  "🧪",
+  "🫀",
+  "🫁",
+  "🧠",
+  "🩸",
+  "💉",
+  "🏥",
+  "🚑",
+  "👨‍⚕️",
+  "👩‍⚕️",
+  "🤖",
+  "💻",
+  "📡",
+  "🔮",
+  "🌙",
+  "☀️",
+  "🌸",
+  "🔥",
+  "🌍",
+  "🚀"
+];
+
+for (let i = 0; i < 90; i++) {
+
+  const item = document.createElement("div");
+
+  const symbol =
+    symbols[Math.floor(Math.random() * symbols.length)];
+
+  const color =
+    colors[Math.floor(Math.random() * colors.length)];
+
+  const size = Math.random() * 18 + 8;
+
+  item.textContent = symbol;
+
+  Object.assign(item.style, {
+    position: "absolute",
+    left: Math.random() * 100 + "vw",
+    top: Math.random() * 100 + "vh",
+    fontSize: size + "px",
+    color: color,
+    opacity: Math.random() * 0.65 + 0.25,
+    textShadow:
+      "0 0 8px " + color +
+      ", 0 0 18px " + color +
+      ", 0 0 35px " + color,
+    animation:
+      "floatSpace " +
+      (5 + Math.random() * 8) +
+      "s ease-in-out infinite",
+    animationDelay:
+      Math.random() * 6 + "s"
+  });
+
+  spaceEffects.appendChild(item);
+}
+
+const style = document.createElement("style");
+
+style.textContent = `
+@keyframes floatSpace {
+
+  0% {
+    transform: translate(0px, 0px) rotate(0deg) scale(0.7);
+    opacity: 0.25;
+  }
+
+  50% {
+    transform: translate(30px, 40px) rotate(180deg) scale(1.25);
+    opacity: 1;
+  }
+
+  100% {
+    transform: translate(0px, 80px) rotate(360deg) scale(0.7);
+    opacity: 0.25;
+  }
+
+}
+`;
+
+document.head.appendChild(style);
+</script>
+<body>
+
+<div class="siteShell">
+
+  <header class="navbar">
+    <div class="navInner">
+
+      <a href="#home" class="logo">
+        <span class="logoMark">Q</span>
+        <span>QReva</span>
+      </a>
+
+      <nav class="navLinks">
+        <a href="#home">Home</a>
+        <a href="#templates">Templates</a>
+        <a href="#features">Features</a>
+        <a href="#how">How It Works</a>
+      </nav>
+
+      <button class="primaryBtn" id="navCreateBtn">
+        Create QR
+      </button>
+
+      <button class="mobileMenuBtn" id="mobileMenuBtn">
+        ☰
+      </button>
+
+    </div>
+
+    <div class="mobileMenu" id="mobileMenu">
+      <a href="#home">Home</a>
+      <a href="#templates">Templates</a>
+      <a href="#features">Features</a>
+      <a href="#how">How It Works</a>
+      <button class="primaryBtn" id="mobileCreateBtn">Create QR</button>
+    </div>
+  </header>
+
+
+  <main>
+
+    <section class="hero" id="home">
+
+      <div class="heroGlow glowOne"></div>
+      <div class="heroGlow glowTwo"></div>
+
+      <div class="heroContent">
+
+        <div class="heroBadge">
+          ✦ Universal QR Creator
+        </div>
+
+        <h1>
+          Create Anything.
+          <span>Turn It Into a QR.</span>
+        </h1>
+
+        <p>
+          Build beautiful interactive pages for birthdays, weddings,
+          social profiles, businesses, portfolios and more.
+        </p>
+
+        <div class="heroActions">
+          <button class="primaryBtn largeBtn" id="heroCreateBtn">
+            Start Creating
+          </button>
+
+          <a href="#templates" class="secondaryBtn largeBtn">
+            Explore Templates
+          </a>
+        </div>
+
+        <div class="heroStats">
+          <div>
+            <strong>30+</strong>
+            <span>Templates</span>
+          </div>
+
+          <div>
+            <strong>10+</strong>
+            <span>Page Types</span>
+          </div>
+
+          <div>
+            <strong>100%</strong>
+            <span>Customizable</span>
+          </div>
+        </div>
+
+      </div>
+
+      <div class="heroVisual">
+
+        <div class="floatingCard cardOne">
+          <span>🎂</span>
+          <div>
+            <strong>Birthday</strong>
+            <small>Memories</small>
+          </div>
+        </div>
+
+        <div class="qrHeroCard">
+
+          <div class="qrDecoration"></div>
+
+          <div class="fakeQr">
+            <div class="qrGrid"></div>
+            <div class="qrCenter">Q</div>
+          </div>
+
+          <div class="qrCardText">
+            <strong>Scan the Moment</strong>
+            <span>One QR. Your whole story.</span>
+          </div>
+
+        </div>
+
+        <div class="floatingCard cardTwo">
+          <span>💍</span>
+          <div>
+            <strong>Wedding</strong>
+            <small>Invitation</small>
+          </div>
+        </div>
+
+      </div>
+
+    </section>
+
+
+    <section class="templatesSection" id="templates">
+
+      <div class="sectionHeader">
+        <div>
+          <div class="eyebrow">CREATE YOUR PAGE</div>
+          <h2>Choose a template</h2>
+          <p>Start with a ready made design and customize everything.</p>
+        </div>
+
+        <button class="outlineBtn" id="blankTemplateBtn">
+          + Start Blank
+        </button>
+      </div>
+
+      <div class="categoryTabs" id="categoryTabs"></div>
+
+      <div class="templateGrid" id="templateGrid"></div>
+
+    </section>
+
+
+    <section class="featuresSection" id="features">
+
+      <div class="sectionHeader centered">
+        <div class="eyebrow">POWERFUL CREATION TOOLS</div>
+        <h2>More than just a QR code</h2>
+        <p>
+          QReva turns a simple QR into an interactive digital experience.
+        </p>
+      </div>
+
+      <div class="featureGrid">
+
+        <div class="featureCard">
+          <div class="featureIcon">🎨</div>
+          <h3>Complete Styling</h3>
+          <p>
+            Change colors, fonts, backgrounds, corners and animations.
+          </p>
+        </div>
+
+        <div class="featureCard">
+          <div class="featureIcon">📸</div>
+          <h3>Photos & Videos</h3>
+          <p>
+            Add memories, galleries, videos and personal media.
+          </p>
+        </div>
+
+        <div class="featureCard">
+          <div class="featureIcon">✨</div>
+          <h3>Interactive Elements</h3>
+          <p>
+            Add countdowns, stickers, RSVP, links, social profiles and more.
+          </p>
+        </div>
+
+        <div class="featureCard">
+          <div class="featureIcon">⚡</div>
+          <h3>Live Preview</h3>
+          <p>
+            See every change instantly while designing your page.
+          </p>
+        </div>
+
+        <div class="featureCard">
+          <div class="featureIcon">📱</div>
+          <h3>Responsive</h3>
+          <p>
+            Your QR page works beautifully on phones, tablets and desktops.
+          </p>
+        </div>
+
+        <div class="featureCard">
+          <div class="featureIcon">🔗</div>
+          <h3>QR Ready</h3>
+          <p>
+            Generate a QR code for your customized digital page.
+          </p>
+        </div>
+
+      </div>
+
+    </section>
+
+
+    <section class="howSection" id="how">
+
+      <div class="sectionHeader centered">
+        <div class="eyebrow">SIMPLE WORKFLOW</div>
+        <h2>From idea to QR in minutes</h2>
+      </div>
+
+      <div class="steps">
+
+        <div class="step">
+          <div class="stepNumber">01</div>
+          <div>
+            <h3>Choose</h3>
+            <p>Select a category and template.</p>
+          </div>
+        </div>
+
+        <div class="step">
+          <div class="stepNumber">02</div>
+          <div>
+            <h3>Customize</h3>
+            <p>Add your content, media and style.</p>
+          </div>
+        </div>
+
+        <div class="step">
+          <div class="stepNumber">03</div>
+          <div>
+            <h3>Preview</h3>
+            <p>See your page update in real time.</p>
+          </div>
+        </div>
+
+        <div class="step">
+          <div class="stepNumber">04</div>
+          <div>
+            <h3>Generate</h3>
+            <p>Create your QR and share the experience.</p>
+          </div>
+        </div>
+
+      </div>
+
+    </section>
+
+
+    <section class="finalCta">
+
+      <div class="ctaContent">
+
+        <div class="eyebrow">READY?</div>
+
+        <h2>Your next QR can be anything.</h2>
+
+        <p>
+          Birthday. Wedding. Business. Portfolio. Memories.
+          Build it your way.
+        </p>
+
+        <button class="primaryBtn largeBtn" id="finalCreateBtn">
+          Create My QR
+        </button>
+
+      </div>
+
+    </section>
+
+  </main>
+
+
+  <footer>
+
+    <div class="footerInner">
+
+      <div class="logo">
+        <span class="logoMark">Q</span>
+        <span>QReva</span>
+      </div>
+
+      <p>
+        Create anything. Turn it into a QR.
+      </p>
+
+      <span>
+        © 2026 QReva
+      </span>
+
+    </div>
+
+  </footer>
+
+</div>
+
+
+<!-- EDITOR -->
+
+<div class="modal hidden" id="editorModal">
+
+  <div class="editorWindow">
+
+    <div class="editorHeader">
+
+      <div class="editorBrand">
+        <span class="logoMark">Q</span>
+
+        <div>
+          <strong>QReva Editor</strong>
+          <small id="editorTemplateName">Template</small>
+        </div>
+      </div>
+
+      <div class="editorActions">
+
+        <button class="ghostBtn" id="saveProjectBtn">
+          Save
+        </button>
+
+        <button class="ghostBtn" id="previewPageBtn">
+          Preview
+        </button>
+
+        <button class="primaryBtn" id="generateQrBtn">
+          Generate QR
+        </button>
+
+        <button class="closeBtn" id="closeEditor">
+          ×
+        </button>
+
+      </div>
+
+    </div>
+
+
+    <div class="editorLayout">
+
+      <aside class="editorSidebar">
+
+        <div class="editorIntro">
+          <span class="eyebrow">CUSTOMIZE</span>
+          <h2>Your Page</h2>
+          <p>Edit sections and design.</p>
+        </div>
+
+
+        <div class="panel">
+
+          <div class="panelTitle">
+            <span>Page Sections</span>
+            <span class="sectionCount" id="sectionCount">0</span>
+          </div>
+
+          <div id="blockEditor"></div>
+
+          <div class="addBlockRow">
+
+            <select id="blockTypeSelect"></select>
+
+            <button class="primaryBtn" id="addBlockBtn">
+              Add
+            </button>
+
+          </div>
+
+        </div>
+
+
+        <div class="panel">
+
+          <div class="panelTitle">
+            <span>Design</span>
+          </div>
+
+          <div class="controlGrid">
+
+            <label>
+              Primary
+              <input type="color" id="primaryColor">
+            </label>
+
+            <label>
+              Secondary
+              <input type="color" id="secondaryColor">
+            </label>
+
+            <label>
+              Background
+              <input type="color" id="backgroundColor">
+            </label>
+
+            <label>
+              Text
+              <input type="color" id="textColor">
+            </label>
+
+          </div>
+
+
+          <label class="fullControl">
+            Font
+
+            <select id="fontSelect">
+              <option value="Inter">Inter</option>
+              <option value="Georgia">Georgia</option>
+              <option value="Poppins">Poppins</option>
+              <option value="Arial">Arial</option>
+              <option value="Trebuchet MS">Trebuchet</option>
+            </select>
+
+          </label>
+
+
+          <label class="fullControl">
+            Animation
+
+            <select id="animationSelect">
+              <option value="fade">Soft Fade</option>
+              <option value="slide">Slide Up</option>
+              <option value="zoom">Zoom</option>
+              <option value="none">None</option>
+            </select>
+
+          </label>
+
+
+          <label class="fullControl">
+            Corner Radius
+
+            <input
+              type="range"
+              id="radiusRange"
+              min="0"
+              max="40"
+              value="20"
+            >
+          </label>
+
+        </div>
+
+      </aside>
+
+
+      <section class="previewArea">
+
+        <div class="previewTopBar">
+
+          <span>LIVE PREVIEW</span>
+
+          <div>
+            <button class="deviceBtn active" data-device="phone">
+              Phone
+            </button>
+
+            <button class="deviceBtn" data-device="tablet">
+              Tablet
+            </button>
+          </div>
+
+        </div>
+
+
+        <div class="deviceStage">
+
+          <div class="phoneFrame" id="deviceFrame">
+
+            <div
+              class="livePreview"
+              id="livePreview"
+            ></div>
+
+          </div>
+
+        </div>
+
+      </section>
+
+    </div>
+
+  </div>
+
+</div>
+
+
+<!-- QR MODAL -->
+
+<div class="modal hidden" id="qrModal">
+
+  <div class="qrWindow">
+
+    <button class="closeBtn qrClose" id="closeQr">
+      ×
+    </button>
+
+    <div class="eyebrow">YOUR QR CODE</div>
+
+    <h2>Scan your QReva page</h2>
+
+    <p>
+      Your customized page is connected to this QR code.
+    </p>
+
+    <div class="qrOutput" id="qrCanvas"></div>
+
+    <div class="qrUrl" id="qrUrl"></div>
+
+    <div class="qrActions">
+
+      <button class="primaryBtn" id="downloadQrBtn">
+        Download QR
+      </button>
+
+      <button class="secondaryBtn" id="copyQrLinkBtn">
+        Copy Link
+      </button>
+
+    </div>
+
+  </div>
+
+</div>
+
+
+<div class="toast" id="toast"></div>
+
+
+<script src="script.js"></script>
+
+</body>
+</html>
