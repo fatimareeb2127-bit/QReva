@@ -112,7 +112,7 @@ Instead of linking only to a basic URL, users can create a customized digital pa
 
 ### QR Code
 
-![QReva Features](screenshots/QR.png)
+![QReva Features](images/QR.png)
 
 ### View
 
