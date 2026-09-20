@@ -96,7 +96,27 @@ QReva is designed to work across:
 The goal of QReva is to transform a simple QR code into a complete interactive digital experience.
 
 Instead of linking only to a basic URL, users can create a customized digital page containing text, images, social links, contact information, locations, and other interactive elements.
+## Screenshots
 
+### Home Page
+
+![QReva Home](images/home.png)
+
+### Templates
+
+![QReva Templates](images/template.png)
+
+### Editor
+
+![QReva Editor](images/edit.png)
+
+### QR Code
+
+![QReva Features](screenshots/QR.png)
+
+### View
+
+![QReva Mobile](images/scan.png)
 ## 🔮 Future Improvements
 
 • QR code generation
